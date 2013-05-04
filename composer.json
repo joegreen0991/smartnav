@@ -1,0 +1,17 @@
+{
+    "name": "joegreen0991/Smartnav",
+    "description": "Menu builder",
+    "keywords": ["menu", "navigation", "nav builder"],
+    "license": "MIT",
+    "authors": [
+        {"name": "Joe Green", "email": "joe.green0991@gmail.com"}
+    ],
+    "autoload": {
+        "classmap": [
+            "lib/Smartnav.php"
+        ]
+    },
+    "require": {
+        "php": ">=5.3.0"
+    }
+}
