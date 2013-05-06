@@ -1,6 +1,6 @@
-<?php
+<?php namespace Smartnav;
 
-class Smartnav implements \Countable {
+class Menu implements \Countable {
 
     /**
      * The current URI
@@ -27,13 +27,20 @@ class Smartnav implements \Countable {
     public $element = 'ul';
     
     /**
+     *
+     * @var type 
+     */
+    public $renderer;
+    
+    /**
      * Constructor
      * @param array $menu
      * @param type $uri
      */
-    public function __construct(array $menu,$uri = null) {
+    public function __construct(array $menu,$uri = null,  RendererInterface $renderer = null) {
         $this->menu = $menu;
         $this->uri = $uri;
+        $this->renderer = $renderer ? : new Basic;
     }
     
     /**
@@ -109,26 +116,11 @@ class Smartnav implements \Countable {
 
             $item['pages'] = isset($item['pages']) ? $this->_render($item['pages'], array(), $level) : '';
 
-            $items[] = $this->render_item($item);
+            $items[] = $this->renderer->render_item($this,$item);
         }
         $str_items = implode(PHP_EOL, $items);
-        return $this->element ? '<' . $this->element . $this->attr($attributes) . '>' . $str_items . '</' . $this->element . '>' : $str_items;
-    }
-
-    /**
-     * Turn item data into HTML
-     * 
-     * @param   array 	$item 		The menu item
-     * @return 	string 	The HTML
-     */
-    public function render_item($item) {
-        $attrs = $item;
-        foreach (array('name', 'pages', 'controller', 'module', 'action', 'list_attributes') as $invalid) {
-            if (isset($attrs[$invalid]))
-                unset($attrs[$invalid]);
-        }
-
-        return '<li' . $this->attr($item['list_attributes']) . '><a' . $this->attr($attrs) . '>' . $item['name'] . '</a>' . $item['pages'] . '</li>';
+        
+        return $this->renderer->render($this,$str_items,$attributes);
     }
 
     /**
