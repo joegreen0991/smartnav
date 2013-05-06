@@ -7,8 +7,8 @@
         {"name": "Joe Green", "email": "joe.green0991@gmail.com"}
     ],
     "autoload": {
-        "classmap": [
-            "lib/Smartnav.php"
+        "psr-0": [
+            {"Smartnav":"lib/"}
         ]
     },
     "require": {
