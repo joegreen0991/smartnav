@@ -240,7 +240,7 @@ class Menu implements \Countable {
      * @param type $attr
      * @return type
      */
-    private function attr($attr) {
+    public function attr($attr) {
         $string = ' ';
         foreach ($attr as $k => $v) {
             $v !== false && is_scalar($v) and $string .= is_numeric($k) ? $v : $k . '="' . e($v) . '"';
