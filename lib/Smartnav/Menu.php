@@ -90,7 +90,7 @@ class Menu implements \Countable {
      * @return string
      */
     public function render($level = null) {
-        return $this->_render($this->menu, $this->_attributes, $level);
+        return $this->renderer->render_top($this,$this->_render($this->menu, $this->_attributes), $this->_attributes);
     }
     
     /**

@@ -1,8 +1,12 @@
 <?php namespace Smartnav;
 class Basic implements RendererInterface {
     
-    public function render(Menu $menu,$menuElements,$attributes,$level){
+    public function render(Menu $menu,$menuElements,$attributes){
            return $menu->element ? '<' . $menu->element . $menu->attr($attributes) . '>' . $menuElements . '</' . $menu->element . '>' : $menuElements;
+    }
+    
+    public function render_top(Menu $menu,$menuElements,$attributes){
+        return $menuElements;
     }
 
     public function render_item(Menu $menu,array $item){
