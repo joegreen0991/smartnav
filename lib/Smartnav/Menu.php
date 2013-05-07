@@ -120,7 +120,7 @@ class Menu implements \Countable {
         }
         $str_items = implode(PHP_EOL, $items);
         
-        return $this->renderer->render($this,$str_items,$attributes);
+        return $this->renderer->render($this,$str_items,$attributes,$level);
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php namespace Smartnav;
 class Basic implements RendererInterface {
     
-    public function render(Menu $menu,$menuElements,$attributes){
+    public function render(Menu $menu,$menuElements,$attributes,$level){
            return $menu->element ? '<' . $menu->element . $menu->attr($attributes) . '>' . $menuElements . '</' . $menu->element . '>' : $menuElements;
     }
 
