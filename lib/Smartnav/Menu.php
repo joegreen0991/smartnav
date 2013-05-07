@@ -18,7 +18,7 @@ class Menu implements \Countable {
      * An array of additional attributes to add to the containing element
      * @var array 
      */
-    private $_attributes = array('class' => 'navigation');
+    private $_attributes = array('class' => 'nav');
     
     /**
      * The containing element

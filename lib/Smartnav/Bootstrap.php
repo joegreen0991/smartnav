@@ -6,7 +6,7 @@ class Bootstrap extends Basic {
     }
     
     public function render(Menu $menu,$menuElements,$attributes){
-        return '<ul>'.$menuElements.'</ul>';
+        return '<ul '.$menu->attr($attributes).'>'.$menuElements.'</ul>';
     }
 }
 
