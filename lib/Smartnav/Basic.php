@@ -11,7 +11,7 @@ class Basic implements RendererInterface {
 
     public function render_item(Menu $menu,array $item){
         $attrs = $item;
-        foreach (array('name', 'pages', 'controller', 'module', 'action', 'list_attributes') as $invalid) {
+        foreach (array('name', 'pages', 'group', 'list_attributes') as $invalid) {
             if (isset($attrs[$invalid]))
                 unset($attrs[$invalid]);
         }

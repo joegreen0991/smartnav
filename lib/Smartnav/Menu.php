@@ -89,8 +89,8 @@ class Menu implements \Countable {
      * @param  int  $level The number of sub levels to render
      * @return string
      */
-    public function render($level = null) {
-        return $this->renderer->render_top($this,$this->_render($this->menu, $this->_attributes,$level), $this->_attributes);
+    public function render($group = null,$level = null) {
+        return $this->renderer->render_top($this,$this->_render($this->menu, $this->_attributes,$level,$group), $this->_attributes);
     }
     
     /**
@@ -100,13 +100,18 @@ class Menu implements \Countable {
      * @param int $level
      * @return type
      */
-    private function _render($menu_items,$attributes,$level = null){
+    private function _render($menu_items,$attributes,$level = null,$group = null){
         if ($level !== null && $level-- <= 0)
             return ;
 
         $items = array();
 
         foreach ($menu_items as $item) {
+
+            if(isset($group,$item['group']) && !in_array($group,explode(',',$item['group']))){
+                continue;
+            }
+            
             isset($item['list_attributes']) or $item['list_attributes'] = array();
 
             if ($this->is_active($item) || $this->has_active_children($item)) {
@@ -115,7 +120,7 @@ class Menu implements \Countable {
             }
 
             $item['pages'] = isset($item['pages']) ? $this->_render($item['pages'], array(), $level) : '';
-
+            
             $items[] = $this->renderer->render_item($this,$item);
         }
         $str_items = implode(PHP_EOL, $items);
