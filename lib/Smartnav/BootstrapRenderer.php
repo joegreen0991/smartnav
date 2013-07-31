@@ -1,4 +1,4 @@
-<?php
+<?php namespace Smartnav;
 Class BootstrapRenderer implements Smartnav\RendererInterface {
 
   public function render(Smartnav\Menu $menu, $menuElements, $attributes, $level) {
