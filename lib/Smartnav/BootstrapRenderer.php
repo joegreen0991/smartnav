@@ -1,16 +1,15 @@
 <?php namespace Smartnav;
-Class BootstrapRenderer implements Smartnav\RendererInterface {
+Class BootstrapRenderer implements RendererInterface {
 
-  public function render(Smartnav\Menu $menu, $menuElements, $attributes, $level) {
-		var_dump($level);
+  public function render(Menu $menu, $menuElements, $attributes, $level) {
 		return $menu->element ? '<' . $menu->element . ($level ? ' class="submenu" ' : $menu->attr($attributes)) . '>' . $menuElements . '</' . $menu->element . '>' : $menuElements;
 	}
 
-	public function render_top(Smartnav\Menu $menu, $menuElements, $attributes) {
+	public function render_top(Menu $menu, $menuElements, $attributes) {
 		return $menuElements;
 	}
 
-	public function render_item(Smartnav\Menu $menu, array $item) {
+	public function render_item(Menu $menu, array $item) {
 		$attrs = $item;
 
 		$caret = empty($item['pages']) ? '' : '<i class="icon-chevron-down"></i>';
