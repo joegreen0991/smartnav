@@ -100,7 +100,7 @@ class Menu implements \Countable {
      * @param int $level
      * @return type
      */
-    private function _render($menu_items,$attributes,$level = null,$group = null){
+    private function _render($menu_items,$attributes,$level = null,$group = null, $currentDepth = 0){
         if ($level !== null && $level-- <= 0)
             return ;
 
@@ -119,13 +119,13 @@ class Menu implements \Countable {
                 $item['list_attributes']['class'] .= 'active';
             }
 
-            $item['pages'] = isset($item['pages']) ? $this->_render($item['pages'], array(), $level) : '';
+            $item['pages'] = isset($item['pages']) ? $this->_render($item['pages'], array(), $level, $group, $currentDepth+1) : '';
             
             $items[] = $this->renderer->render_item($this,$item);
         }
         $str_items = implode(PHP_EOL, $items);
         
-        return $this->renderer->render($this,$str_items,$attributes,$level);
+        return $this->renderer->render($this,$str_items,$attributes,$currentDepth);
     }
 
     /**
