@@ -9,7 +9,7 @@ class Basic implements RendererInterface {
         return $menuElements;
     }
 
-    public function render_item(Menu $menu, array $item){
+    public function render_item(Menu $menu, $item){
         $attrs = $item;
         foreach (array('name', 'pages', 'group', 'list_attributes') as $invalid) {
             if (isset($attrs[$invalid]))
