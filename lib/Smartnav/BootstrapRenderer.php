@@ -9,7 +9,7 @@ Class BootstrapRenderer implements RendererInterface {
 		return $menuElements;
 	}
 
-	public function render_item(Menu $menu, array $item) {
+	public function render_item(Menu $menu, $item) {
 		$attrs = $item;
 
 		$caret = empty($item['pages']) ? '' : '<i class="icon-chevron-down"></i>';
