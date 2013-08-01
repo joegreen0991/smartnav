@@ -18,7 +18,7 @@ class Menu implements \Countable {
      * An array of additional attributes to add to the containing element
      * @var array 
      */
-    private $_attributes = array('class' => 'nav');
+    private $_attributes = array('class' => '');
     
     /**
      * The containing element
@@ -37,7 +37,7 @@ class Menu implements \Countable {
      * @param array $menu
      * @param type $uri
      */
-    public function __construct(array $menu,$uri = null,  RendererInterface $renderer = null) {
+    public function __construct($menu, $uri = null, RendererInterface $renderer = null) {
         $this->menu = $menu;
         $this->uri = $uri;
         $this->renderer = $renderer ? : new Basic;
