@@ -19,7 +19,7 @@ Class BootstrapRenderer implements RendererInterface {
 				unset($attrs[$invalid]);
 		}
 
-		$icon = empty($item['icon']) ? '' : '<i class="' . $item['icon'] . '"></i>';
+		$icon = empty($item['icon']) ? '' : '<i class="' . $item['icon'] . '"></i> ';
 
 		return '<li' . $menu->attr($item['list_attributes']) . '><a' . $menu->attr($attrs) . '>' . $icon . '<span>' . $item['name'] . '</span>' . $caret . '</a>' . $item['pages'] . '</li>';
 	}
