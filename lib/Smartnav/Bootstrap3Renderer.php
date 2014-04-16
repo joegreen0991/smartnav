@@ -24,9 +24,9 @@ Class Bootstrap3Renderer implements RendererInterface {
 
 		$icon = empty($item['icon']) ? '' : '<i class="' . $item['icon'] . '"></i> ';
 
-                $attrs['class'] = isset($attrs['class']) ? $attrs['class'] . ' dropdown-toggle' : 'dropdown-toggle';
-                
-                $attrs['data-toggle'] = "dropdown";
+                empty($item['pages']) or $attrs['class'] = isset($attrs['class']) ? $attrs['class'] . ' dropdown-toggle' : 'dropdown-toggle';
+
+        	empty($item['pages']) or $attrs['data-toggle'] = "dropdown";
                 
 		return '<li' . $menu->attr($item['list_attributes']) . '><a' . $menu->attr($attrs) . '>' . $icon . '<span>' . $item['name'] . '</span>' . $caret . '</a>' . $item['pages'] . '</li>';
 	}
